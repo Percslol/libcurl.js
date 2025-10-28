@@ -18,6 +18,7 @@ This is a port of [libcurl](https://curl.se/libcurl/) to WebAssembly for use in 
   * [Changing the Network Transport](#changing-the-network-transport)
   * [Changing the Websocket Proxy URL](#changing-the-websocket-proxy-url)
   * [Getting Libcurl's Output](#getting-libcurl-s-output)
+  * [Changing the HTTP Version:](#changing-the-http-version)
   * [Getting Error Strings](#getting-error-strings)
   * [Getting Version Info](#getting-version-info)
   * [Getting the CA Certificates Bundle](#getting-the-ca-certificates-bundle)
@@ -263,6 +264,15 @@ Libcurl.js will also output some error messages to the browser console. You can 
 - `text` - The text that is to be logged.
 
 This may be useful if you are running libcurl.js inside a web worker and do not have access to the regular console API.
+
+### Changing the HTTP Version:
+If you want to force the usage of HTTP/1.1 or HTTP/1.0, you may pass the `_libcurl_http_version` argument to the `libcurl.fetch` function. The value provided must be a number.
+
+A value of `1.0` means HTTP/1.0 is used, `1.1` means HTTP/1.1 is used, and `2.0` means HTTP/2 is used. The default is to use HTTP/2.
+
+```js
+await libcurl.fetch("https://example.com", {_libcurl_http_version: 1.1});
+```
 
 ### Getting Error Strings:
 Libcurl.js reports errors based on the [error codes](https://curl.se/libcurl/c/libcurl-errors.html) defined by the libcurl C library. The `libcurl.get_error_string` function can be used to get an error string from an error code. 

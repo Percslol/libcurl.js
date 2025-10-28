@@ -28,6 +28,19 @@ void http_set_options(CURL* http_handle, const char* json_params, const char* bo
       curl_easy_setopt(http_handle, CURLOPT_VERBOSE, 1L);
     }
 
+    if (strcmp(key, "_libcurl_http_version") == 0) {
+      if (!cJSON_IsNumber(item)) continue;
+      if (item->valuedouble == 1.0) {
+        curl_easy_setopt(http_handle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
+      }
+      else if (item->valuedouble == 1.1) {
+        curl_easy_setopt(http_handle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+      }
+      else if (item->valuedouble == 2.0) {
+        curl_easy_setopt(http_handle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2_0);
+      }
+    }
+
     if (strcmp(key, "method") == 0 && cJSON_IsString(item)) {
       curl_easy_setopt(http_handle, CURLOPT_CUSTOMREQUEST, item->valuestring);
     }

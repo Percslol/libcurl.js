@@ -129,7 +129,10 @@ api = {
   CurlWebSocket: CurlWebSocket,
   TLSSocket: TLSSocket,
   HTTPSession: HTTPSession,
-  fetch() {throw new Error("not ready")},
+  fetch() {
+    check_loaded(true);
+    throw new Error("not ready")
+  },
   
   get copyright() {return copyright_notice},
   get version() {return get_version()},

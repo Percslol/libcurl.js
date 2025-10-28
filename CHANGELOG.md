@@ -1,5 +1,10 @@
 # Libcurl.js Changelog:
 
+## v0.7.3 (10/28/25):
+- Add an option in the API to control the HTTP protocol version
+- Add better error messages for `libcurl.fetch` before initialization
+- Update Mbed TLS, nghttp2, and cJSON libraries
+
 ## v0.7.2 (9/4/25):
 - Use the latest versions of Mbed TLS, curl, and nghttp2
 
