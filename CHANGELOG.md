@@ -1,5 +1,10 @@
 # Libcurl.js Changelog:
 
+## v0.7.4 (12/1/25):
+- Export `libcurl.wasm` in the NPM package ([PR #8](https://github.com/ading2210/libcurl.js/pull/8))
+- Allow requests to `.onion` domains (overriding [upstream curl behavior](https://github.com/curl/curl/discussions/11125))
+- Use the latest versions of curl and brotli 
+
 ## v0.7.3 (10/28/25):
 - Add an option in the API to control the HTTP protocol version
 - Add better error messages for `libcurl.fetch` before initialization
