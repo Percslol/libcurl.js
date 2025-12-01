@@ -12,12 +12,9 @@ ZLIB_PREFIX=$(realpath build/zlib-wasm)
 BROTLI_PREFIX=$(realpath build/brotli-wasm)
 NGHTTP2_PREFIX=$(realpath build/nghttp2-wasm)
 
-#there is an upstream bug with libcurl 8.16.0
-#https://github.com/curl/curl/pull/18357 breaks compiling on emscripten
-
 cd build
 rm -rf curl
-git clone -b curl-8_15_0 --depth=1 https://github.com/curl/curl
+git clone -b 8.17.0-patched --depth=1 https://github.com/ading2210/curl
 cd curl
 
 #emscripten does not support the pipe2 syscall

@@ -15,6 +15,7 @@ void http_set_options(CURL* http_handle, const char* json_params, const char* bo
   curl_easy_setopt(http_handle, CURLOPT_FOLLOWLOCATION, 1);
   curl_easy_setopt(http_handle, CURLOPT_ACCEPT_ENCODING, "");
   curl_easy_setopt(http_handle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2_0);
+  curl_easy_setopt(http_handle, CURLOPT_IGNORE_ONION, 1L);
 
   //parse json options
   cJSON* request_json = cJSON_Parse(json_params);
